@@ -8,7 +8,7 @@
   const ctx = canvasEl.getContext('2d');
   ctx.canvas.height = 500;
   ctx.canvas.width = 500;
-  ctx.font = '32px Microsoft YaHei';
+  ctx.font = '32px "Times New Roman","新宋体"';
   ctx.textBaseline = 'top';
 
   textareaEl.addEventListener('input', function (ev) {
