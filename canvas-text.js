@@ -68,7 +68,7 @@
     /** @type {number} */ x,
     /** @type {number} */ y,
     /** @type {number} */ maxWidth,
-    /** @type {number} */ lineHeight = getLineHeight(ctx,text),
+    /** @type {number} */ lineHeight = getLineHeight(ctx, text),
   ) => {
     const lineList = splitToLineList(ctx, text, maxWidth);
     lineList.forEach((text, index) => {
