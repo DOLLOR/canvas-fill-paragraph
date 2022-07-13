@@ -6,6 +6,8 @@
   const canvasEl = document.getElementById('canvas_1654572755_5373ff');
 
   const ctx = canvasEl.getContext('2d');
+  if (!ctx) return;
+
   ctx.canvas.height = 500;
   ctx.canvas.width = 500;
   ctx.font = '32px "Times New Roman","新宋体"';
@@ -15,13 +17,14 @@
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     const text = this.value;
 
-    fillParagraph(
+    const res = fillParagraph(
       ctx,
       text,
       0,
       0,
       ctx.canvas.width,
     );
+    console.log(res);
   });
 
   // -----------------------------------------------------------
@@ -71,5 +74,6 @@
     lineList.forEach((text, index) => {
       ctx.fillText(text, x, y + index * lineHeight, maxWidth);
     });
+    return { lineHeight, lineList };
   };
 })()
