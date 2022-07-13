@@ -5,16 +5,24 @@
   /** @type {HTMLCanvasElement} */
   const canvasEl = document.getElementById('canvas_1654572755_5373ff');
 
+  /** @type {HTMLInputElement} */
+  const fontEl = document.getElementById('font_1657680184_614dc7');
+  fontEl.value = '32px "Times New Roman","新宋体"';
+  fontEl.style.fontFamily = 'monospace';
+  fontEl.style.width = '500px';
+  fontEl.style.boxSizing = 'border-box';
+
   const ctx = canvasEl.getContext('2d');
   if (!ctx) return;
 
   ctx.canvas.height = 500;
   ctx.canvas.width = 500;
-  ctx.font = '32px "Times New Roman","新宋体"';
   ctx.textBaseline = 'top';
 
-  textareaEl.addEventListener('input', function (ev) {
+  const onInput = function () {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+
+    ctx.font = fontEl.value;
     const text = this.value;
 
     const res = fillParagraph(
@@ -25,7 +33,9 @@
       ctx.canvas.width,
     );
     console.log(res);
-  });
+  };
+  textareaEl.addEventListener('input', onInput);
+  fontEl.addEventListener('change', onInput);
 
   // -----------------------------------------------------------
   const splitToLineList = (
