@@ -23,7 +23,7 @@
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
     ctx.font = fontEl.value;
-    const text = this.value;
+    const text = textareaEl.value;
 
     const res = fillParagraph(
       ctx,
@@ -35,7 +35,12 @@
     console.log(res);
   };
   textareaEl.addEventListener('input', onInput);
-  fontEl.addEventListener('change', onInput);
+  fontEl.addEventListener('change', () => {
+    if (!fontEl.value) {
+      fontEl.value = getComputedStyle(canvasEl).font;
+    }
+    onInput();
+  });
 
   // -----------------------------------------------------------
   const splitToLineList = (
