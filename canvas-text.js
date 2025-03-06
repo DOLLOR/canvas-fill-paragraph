@@ -12,11 +12,17 @@
   fontEl.style.width = '500px';
   fontEl.style.boxSizing = 'border-box';
 
+  /** @type {(canvas: HTMLCanvasElement, width: number, height: number, dpr?: number) => void} */
+  const setCanvasSize = (canvas, width, height, dpr = devicePixelRatio) => {
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    canvas.style.width = `${width}px`;
+  };
+
   const ctx = canvasEl.getContext('2d');
   if (!ctx) return;
 
-  ctx.canvas.height = 500;
-  ctx.canvas.width = 500;
+  setCanvasSize(ctx.canvas ,500, 500);
   ctx.textBaseline = 'top';
 
   const onInput = function () {
